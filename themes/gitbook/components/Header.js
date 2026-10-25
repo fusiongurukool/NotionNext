@@ -11,8 +11,6 @@ import SearchInput from './SearchInput'
 
 /**
  * 页头：顶部导航栏 + 菜单
- * @param {} param0
- * @returns
  */
 export default function Header(props) {
   const { className, customNav, customMenu } = props
@@ -77,14 +75,13 @@ export default function Header(props) {
             </div>
           </div>
 
-         <div className='flex items-center gap-4'>
           {/* 右侧 */}
-          {/* Clerk buttons removed */}
-        </div>
+          <div className='flex items-center gap-4'>
             <DarkModeButton className='text-sm items-center h-full hidden md:flex' />
             <SearchInput className='hidden md:flex md:w-52 lg:w-72' />
+            
             {/* 折叠按钮、仅移动端显示 */}
-            <div className='mr-1 flex md:hidden justify-end items-center space-x-4  dark:text-gray-200'>
+            <div className='mr-1 flex md:hidden justify-end items-center space-x-4 dark:text-gray-200'>
               <DarkModeButton className='flex text-md items-center h-full' />
               <div
                 onClick={toggleMenuOpen}
@@ -98,7 +95,7 @@ export default function Header(props) {
             </div>
           </div>
         </div>
-     
+      </div>
 
       {/* 移动端折叠菜单 */}
       <Collapse
