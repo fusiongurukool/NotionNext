@@ -13,7 +13,6 @@ import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { isBrowser } from '@/lib/utils'
 import { getShortId } from '@/lib/utils/pageId'
-import { SignIn, SignUp } from '@clerk/nextjs'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import SmartLink from '@/components/SmartLink'
@@ -535,17 +534,12 @@ const LayoutTagIndex = props => {
  */
 const LayoutSignIn = props => {
   const { post } = props
-  const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 
   return (
     <>
       <div className='grow mt-20'>
         {/* clerk预置表单 */}
-        {enableClerk && (
-          <div className='flex justify-center py-6'>
-            <SignIn />
-          </div>
-        )}
+        
         <div id='article-wrapper'>
           <NotionPage post={post} />
         </div>
