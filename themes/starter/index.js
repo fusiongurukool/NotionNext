@@ -30,7 +30,6 @@ import DashboardBody from '@/components/ui/dashboard/DashboardBody'
 import DashboardHeader from '@/components/ui/dashboard/DashboardHeader'
 import { useGlobal } from '@/lib/global'
 import { loadWowJS } from '@/lib/plugins/wow'
-import { SignIn, SignUp } from '@clerk/nextjs'
 import SmartLink from '@/components/SmartLink'
 import { ArticleLock } from './components/ArticleLock'
 import { Banner } from './components/Banner'
@@ -479,7 +478,7 @@ const LayoutTagIndex = props => {
  * @returns
  */
 const LayoutSignIn = props => {
-  const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+
   const title = starterConfig('STARTER_SIGNIN', '登录')
   const description = starterConfig(
     'STARTER_SIGNIN_DESCRITION',
@@ -487,17 +486,11 @@ const LayoutSignIn = props => {
   )
   return (
     <>
-      <div className='grow mt-20'>
+          <div className='grow mt-20'>
         <Banner title={title} description={description} />
-        {/* clerk预置表单 */}
-        {enableClerk && (
-          <div className='flex justify-center py-6'>
-            <SignIn />
-          </div>
-        )}
-
+        
         {/* 自定义登录表单 */}
-        {!enableClerk && <SignInForm />}
+        <SignInForm />
       </div>
     </>
   )
