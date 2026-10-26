@@ -1,7 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import DashboardUser from './DashboardUser'
 
 const DashboardMenuList = dynamic(() => import('./DashboardMenuList'))
 const DashboardItemMembership = dynamic(
@@ -29,7 +28,7 @@ export default function DashboardBody() {
       <div className='main-content-wrapper w-full'>
         {basePath === '/dashboard' && <DashboardItemHome />}
         {basePath?.indexOf('/dashboard/user-profile') === 0 && (
-          <DashboardUser />
+         
         )}
         {basePath === '/dashboard/balance' && <DashboardItemBalance />}
         {basePath === '/dashboard/membership' && <DashboardItemMembership />}
