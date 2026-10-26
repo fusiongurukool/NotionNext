@@ -2,7 +2,6 @@
 import DashboardButton from '@/components/ui/dashboard/DashboardButton'
 import { starterConfig } from '../config'
 import { useGlobal } from '@/lib/global'
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import throttle from 'lodash.throttle'
 import SmartLink from '@/components/SmartLink'
 import { useRouter } from 'next/router'
@@ -20,8 +19,6 @@ export const Header = props => {
   const [buttonTextColor, setColor] = useState(
     router.route === '/' ? 'text-white' : ''
   )
-
-  const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 
   useEffect(() => {
     if (isDarkMode || router.route === '/') {
@@ -69,43 +66,20 @@ export const Header = props => {
               <div className='flex items-center gap-4 justify-end pr-16 lg:pr-0'>
                 {/* 深色模式切换 */}
                 <DarkModeButton />
-                {/* 注册登录功能 */}
-                {enableClerk && (
-                  <>
-                    <SignedOut>
-                      <div className='hidden sm:flex items-center gap-3'>
-                        <SmartLink
-                          href={starterConfig('STARTER_NAV_BUTTON_1_URL', '')}
-                          className={`loginBtn ${buttonTextColor} whitespace-nowrap p-2 text-base font-medium hover:opacity-70`}>
-                          {starterConfig('STARTER_NAV_BUTTON_1_TEXT')}
-                        </SmartLink>
-                        <SmartLink
-                          href={starterConfig('STARTER_NAV_BUTTON_2_URL', '')}
-                          className={`signUpBtn ${buttonTextColor} whitespace-nowrap p-2 rounded-md py-2 text-base font-medium duration-300 ease-in-out`}>
-                          {starterConfig('STARTER_NAV_BUTTON_2_TEXT')}
-                        </SmartLink>
-                      </div>
-                    </SignedOut>
-                    <SignedIn>
-                      <UserButton />
-                      <DashboardButton className={'hidden md:block'} />
-                    </SignedIn>
-                  </>
-                )}
-                {!enableClerk && (
-                  <div className='hidden sm:flex items-center gap-3'>
-                    <SmartLink
-                      href={starterConfig('STARTER_NAV_BUTTON_1_URL', '')}
-                      className={`loginBtn ${buttonTextColor} whitespace-nowrap p-2 text-base font-medium hover:opacity-70`}>
-                      {starterConfig('STARTER_NAV_BUTTON_1_TEXT')}
-                    </SmartLink>
-                    <SmartLink
-                      href={starterConfig('STARTER_NAV_BUTTON_2_URL', '')}
-                      className={`signUpBtn ${buttonTextColor} whitespace-nowrap p-2 rounded-md py-2 text-base font-medium duration-300 ease-in-out`}>
-                      {starterConfig('STARTER_NAV_BUTTON_2_TEXT')}
-                    </SmartLink>
-                  </div>
-                )}
+                
+                {/* 导航按钮 (Clerk removed) */}
+                <div className='hidden sm:flex items-center gap-3'>
+                  <SmartLink
+                    href={starterConfig('STARTER_NAV_BUTTON_1_URL', '')}
+                    className={`loginBtn ${buttonTextColor} whitespace-nowrap p-2 text-base font-medium hover:opacity-70`}>
+                    {starterConfig('STARTER_NAV_BUTTON_1_TEXT')}
+                  </SmartLink>
+                  <SmartLink
+                    href={starterConfig('STARTER_NAV_BUTTON_2_URL', '')}
+                    className={`signUpBtn ${buttonTextColor} whitespace-nowrap p-2 rounded-md py-2 text-base font-medium duration-300 ease-in-out`}>
+                    {starterConfig('STARTER_NAV_BUTTON_2_TEXT')}
+                  </SmartLink>
+                </div>
               </div>
             </div>
           </div>
