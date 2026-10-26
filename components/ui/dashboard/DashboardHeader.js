@@ -2,7 +2,6 @@ import LazyImage from '@/components/LazyImage'
 import { useGlobal } from '@/lib/global'
 import formatDate from '@/lib/utils/formatDate'
 import SmartLink from '@/components/SmartLink'
-import DashboardSignOutButton from './DashboardSignOutButton'
 
 /**
  * 仪表盘页头
@@ -42,7 +41,7 @@ export default function DashboardHeader() {
 
         {/* 登出按钮 */}
         <div className='flex items-center'>
-          <DashboardSignOutButton />
+       
         </div>
       </div>
     </>
