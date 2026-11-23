@@ -339,6 +339,9 @@ const nextConfig = {
         {
           source: '/:path*{/}?',
           headers: [
+            ...(process.env.NEXT_PUBLIC_BLOG_ALLOW_INDEXING === 'true'
+              ? []
+              : [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]),
             // 为了博客兼容性，不做过多安全限制
             { key: 'Access-Control-Allow-Credentials', value: 'true' },
             { key: 'Access-Control-Allow-Origin', value: '*' },
