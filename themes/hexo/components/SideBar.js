@@ -1,11 +1,11 @@
-import LazyImage from '@/components/LazyImage'
+﻿import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useRouter } from 'next/router'
 import MenuGroupCard from './MenuGroupCard'
 import { MenuListSide } from './MenuListSide'
 
 /**
- * 侧边抽屉
+ * ä¾§è¾¹æŠ½å±‰
  * @param tags
  * @param currentTag
  * @returns {JSX.Element}
@@ -23,7 +23,7 @@ const SideBar = props => {
               router.push('/')
             }}
             className='justify-center items-center flex hover:rotate-45 py-6 hover:scale-105 dark:text-gray-100  transform duration-200 cursor-pointer'>
-            {/* 头像 */}
+            {/* å¤´åƒ */}
             <LazyImage
               src={siteInfo?.icon}
               className='rounded-full'
@@ -32,14 +32,29 @@ const SideBar = props => {
               alt={siteConfig('AUTHOR')}
             />
           </div>
-          {/* 总览 */}
+          {/* æ€»è§ˆ */}
           <MenuGroupCard {...props} />
         </div>
       </div>
-      {/* 侧拉抽屉的菜单 */}
+      {/* ä¾§æ‹‰æŠ½å±‰çš„èœå• */}
+      <div className='fg-blog-mobile-section'>
+        <div className='fg-blog-mobile-heading'>
+          <span>FUSION <em>GURUKOOL</em></span>
+          <small>Oracle Cloud Learning Hub</small>
+        </div>
+
+        <a
+          href='https://www.fusiongurukool.com/hire-project'
+          className='fg-blog-mobile-cta'>
+          Schedule Discovery Call
+          <span aria-hidden='true'>↗</span>
+        </a>
+      </div>
+
       <MenuListSide {...props} />
     </div>
   )
 }
 
 export default SideBar
+

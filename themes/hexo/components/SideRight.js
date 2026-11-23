@@ -1,4 +1,4 @@
-import Live2D from '@/components/Live2D'
+﻿import Live2D from '@/components/Live2D'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import dynamic from 'next/dynamic'
@@ -27,7 +27,7 @@ const FaceBookPage = dynamic(
 )
 
 /**
- * Hexo主题右侧栏
+ * Hexoä¸»é¢˜å³ä¾§æ 
  * @param {*} props
  * @returns
  */
@@ -48,7 +48,7 @@ export default function SideRight(props) {
 
   const { locale } = useGlobal()
 
-  // 文章全屏处理
+  // æ–‡ç« å…¨å±å¤„ç†
   if (post && post?.fullWidth) {
     return null
   }
@@ -65,6 +65,33 @@ export default function SideRight(props) {
         )}
 
         <InfoCard {...props} />
+        {/* FUSION GURUKOOL LEARNING HUB */}
+        <section className='fg-learning-hub'>
+          <div className='fg-learning-hub-header'>
+            <span>FUSION GURUKOOL ACADEMY</span>
+            <h3>Explore Oracle Learning</h3>
+            <p>Practical Oracle Cloud tutorials and guides.</p>
+          </div>
+
+          <div className='fg-learning-hub-links'>
+            {(props.categoryOptions || []).map(category => (
+              <a
+                key={category.name}
+                href={`/category/${encodeURIComponent(category.name)}`}
+                className='fg-learning-hub-link'>
+                <span>{category.name}</span>
+                <span aria-hidden='true'>↗</span>
+              </a>
+            ))}
+          </div>
+
+          <a
+            href='https://www.fusiongurukool.com/hire-project'
+            className='fg-learning-hub-footer'>
+            Need Oracle Consulting?
+            <span aria-hidden='true'>↗</span>
+          </a>
+        </section>
         {siteConfig('HEXO_WIDGET_ANALYTICS', null, CONFIG) && (
           <AnalyticsCard {...props} />
         )}
@@ -105,3 +132,4 @@ export default function SideRight(props) {
     </div>
   )
 }
+

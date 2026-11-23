@@ -1,4 +1,4 @@
-// import Image from 'next/image'
+﻿// import Image from 'next/image'
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
@@ -10,7 +10,7 @@ import NavButtonGroup from './NavButtonGroup'
 let wrapperTop = 0
 
 /**
- * 顶部全屏大图
+ * é¡¶éƒ¨å…¨å±å¤§å›¾
  * @returns
  */
 const Hero = props => {
@@ -67,24 +67,24 @@ const Hero = props => {
     <header
       id='header'
       style={{ zIndex: 1 }}
-      className='w-full h-screen relative bg-black'
+      className='fg-enterprise-hero w-full relative'
     >
-      <div className='text-white absolute bottom-0 flex flex-col h-full items-center justify-center w-full '>
-        {/* 站点标题 */}
-        <div className='font-bold text-4xl md:text-5xl shadow-text'>
+      <div className='fg-enterprise-hero-content text-white absolute bottom-0 flex flex-col h-full items-center justify-center w-full'>
+        {/* ç«™ç‚¹æ ‡é¢˜ */}
+        <div className='fg-enterprise-hero-title font-bold text-4xl md:text-5xl'>
           {siteInfo?.title || siteConfig('TITLE')}
         </div>
-        {/* 站点欢迎语 */}
+        {/* ç«™ç‚¹æ¬¢è¿Žè¯­ */}
         <div className='mt-2 h-12 items-center text-center font-light shadow-text text-lg'>
           <span id='typed' />
         </div>
 
-        {/* 首页导航大按钮 */}
+        {/* é¦–é¡µå¯¼èˆªå¤§æŒ‰é’® */}
         {siteConfig('HEXO_HOME_NAV_BUTTONS', null, CONFIG) && (
           <NavButtonGroup {...props} />
         )}
 
-        {/* 滚动按钮 */}
+        {/* æ»šåŠ¨æŒ‰é’® */}
         <div
           onClick={scrollToWrapper}
           className='z-10 cursor-pointer w-full text-center py-4 text-3xl absolute bottom-10 text-white [text-shadow:0_0_0.1em_black,0_0_0.2em_black]'
@@ -96,18 +96,9 @@ const Hero = props => {
           <i className='opacity-70 animate-bounce fas fa-angle-down' />
         </div>
       </div>
-
-      <LazyImage
-        priority
-        id='header-cover'
-        alt={siteInfo?.title}
-        src={siteInfo?.pageCover}
-        width={1920}
-        height={1080}
-        className={`header-cover w-full h-screen object-cover object-center ${siteConfig('HEXO_HOME_NAV_BACKGROUND_IMG_FIXED', null, CONFIG) ? 'fixed' : ''}`}
-      />
     </header>
   )
 }
 
 export default Hero
+

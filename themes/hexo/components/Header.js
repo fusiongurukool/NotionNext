@@ -1,4 +1,4 @@
-import { siteConfig } from '@/lib/config'
+﻿import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import throttle from 'lodash.throttle'
 import SmartLink from '@/components/SmartLink'
@@ -18,7 +18,7 @@ import TagGroups from './TagGroups'
 let windowTop = 0
 
 /**
- * 顶部导航
+ * é¡¶éƒ¨å¯¼èˆª
  * @param {*} param0
  * @returns
  */
@@ -39,7 +39,7 @@ const Header = props => {
     changeShow(false)
   }
 
-  // 监听滚动
+  // ç›‘å¬æ»šåŠ¨
   useEffect(() => {
     window.addEventListener('scroll', topNavStyleHandler, { passive: true })
     router.events.on('routeChangeComplete', topNavStyleHandler)
@@ -56,11 +56,11 @@ const Header = props => {
     throttle(() => {
       const scrollS = window.scrollY
       const nav = document.querySelector('#sticky-nav')
-      // 首页和文章页会有头图
+      // é¦–é¡µå’Œæ–‡ç« é¡µä¼šæœ‰å¤´å›¾
       const header = document.querySelector('#header')
-      // 导航栏和头图是否重叠
+      // å¯¼èˆªæ å’Œå¤´å›¾æ˜¯å¦é‡å 
       const scrollInHeader =
-        header && (scrollS < 10 || scrollS < header?.clientHeight - 50) // 透明导航条的条件
+        header && (scrollS < 10 || scrollS < header?.clientHeight - 50) // é€æ˜Žå¯¼èˆªæ¡çš„æ¡ä»¶
 
       // const textWhite = header && scrollInHeader
 
@@ -82,7 +82,7 @@ const Header = props => {
         nav && nav.classList.replace('text-white', 'text-black')
       }
 
-      // 导航栏不在头图里，且页面向下滚动一定程度 隐藏导航栏
+      // å¯¼èˆªæ ä¸åœ¨å¤´å›¾é‡Œï¼Œä¸”é¡µé¢å‘ä¸‹æ»šåŠ¨ä¸€å®šç¨‹åº¦ éšè—å¯¼èˆªæ 
       const showNav =
         scrollS <= windowTop ||
         scrollS < 5 ||
@@ -146,7 +146,7 @@ const Header = props => {
     <div id='top-nav' className='z-40'>
       <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot} />
 
-      {/* 导航栏 */}
+      {/* å¯¼èˆªæ  */}
       <div
         id='sticky-nav'
         style={{ backdropFilter: 'blur(3px)' }}
@@ -158,11 +158,17 @@ const Header = props => {
             <Logo {...props} />
           </div>
 
-          {/* 右侧功能 */}
+          {/* å³ä¾§åŠŸèƒ½ */}
           <div className='mr-1 flex justify-end items-center '>
             <div className='hidden lg:flex'>
               {' '}
               <MenuListTop {...props} />
+              <a
+                href='https://www.fusiongurukool.com/hire-project'
+                className='fg-blog-discovery-cta'>
+                Schedule Discovery Call
+                <span aria-hidden='true'>↗</span>
+              </a>
             </div>
             <div
               onClick={toggleMenuOpen}
@@ -179,7 +185,7 @@ const Header = props => {
         </div>
       </div>
 
-      {/* 折叠侧边栏 */}
+      {/* æŠ˜å ä¾§è¾¹æ  */}
       <SideBarDrawer isOpen={isOpen} onClose={toggleSideBarClose}>
         <SideBar {...props} />
       </SideBarDrawer>
@@ -188,3 +194,4 @@ const Header = props => {
 }
 
 export default Header
+
